@@ -1,0 +1,95 @@
+{
+  "sheet": {
+    "id": "",
+    "name": "LinkedIn Content",
+    "tab_name": "Content",
+    "columns": [
+      "Date",
+      "Subject",
+      "Content Type",
+      "Headline",
+      "Body",
+      "Hashtags",
+      "Character Count",
+      "Status",
+      "Notes"
+    ]
+  },
+  "brand_voice": {
+    "tone": "professional but approachable",
+    "personality": "thought leader with industry expertise, confident yet humble",
+    "perspective": "first-person singular (I/My) or first-person plural (We/Our) depending on context",
+    "language": "english",
+    "formality_level": "semi-formal",
+    "emotion": "inspirational and insightful",
+    "audience": "professionals, industry peers, potential clients, recruiters"
+  },
+  "content_types": {
+    "post": {
+      "label": "Single Post",
+      "description": "Short-form LinkedIn post (1300 character limit preferred)",
+      "structure": [
+        "Hook (1-2 lines) - grabs attention with a bold statement, question, or surprising fact",
+        "Body (3-5 lines) - expands on the idea with personal experience, data points, or insights",
+        "Call to Action (1 line) - asks for engagement (comments, thoughts, repost)"
+      ],
+      "max_characters": 1300,
+      "include_line_breaks": true,
+      "best_for": "daily thoughts, quick tips, industry observations, personal stories"
+    },
+    "article": {
+      "label": "Article",
+      "description": "Long-form LinkedIn article for deeper thought leadership",
+      "structure": [
+        "Title - compelling, keyword-rich headline",
+        "Introduction - sets context and why the topic matters",
+        "Main Body (3-5 sections) - each with subheading, insight, and supporting detail",
+        "Conclusion - summarizes key takeaways",
+        "Call to Action - invites discussion or next steps"
+      ],
+      "max_characters": 50000,
+      "include_line_breaks": true,
+      "best_for": "comprehensive guides, industry analysis, career advice, case studies"
+    },
+    "carousel": {
+      "label": "Carousel",
+      "description": "Multi-slide carousel post (each slide is a key point)",
+      "structure": [
+        "Slide 1: Title slide with topic + teaser hook",
+        "Slides 2-9: One key insight per slide with supporting detail",
+        "Final Slide: Call to action + engagement prompt"
+      ],
+      "slide_count": 10,
+      "max_characters_per_slide": 220,
+      "best_for": "step-by-step guides, listicles, frameworks, tips collection"
+    }
+  },
+  "hashtag_strategy": {
+    "count_per_post": 5,
+    "max_hashtags": 8,
+    "mix_ratio": {
+      "broad_hashtags": 2,
+      "niche_hashtags": 2,
+      "trending_hashtags": 1
+    },
+    "examples": {
+      "broad": ["#Leadership", "#Innovation", "#Technology", "#CareerGrowth", "#DigitalMarketing"],
+      "niche": ["#AITrends", "#B2BSaaS", "#ProductStrategy", "#RemoteWork", "#FutureOfWork"],
+      "trending": ["#AI", "#GenAI", "#LinkedInTips", "#PersonalBranding", "#CareerAdvice"]
+    },
+    "include_in_body": false,
+    "separator": "\n\n"
+  },
+  "generation_settings": {
+    "default_content_type": "post",
+    "allow_multiple_variations": true,
+    "variations_per_topic": 3,
+    "include_hashtags": true,
+    "include_emoji": false,
+    "min_character_count": 200
+  },
+  "prompts": {
+    "system_prompt": "You are a LinkedIn content strategist and copywriter. Your job is to create engaging, professional LinkedIn content that drives engagement and positions the author as a thought leader. Follow the brand voice guidelines strictly. Use short paragraphs, line breaks between ideas, and end with a call to action. Never use clickbait. Ensure every post provides genuine value to the reader.",
+    "user_prompt_template": "Create {content_type} content for LinkedIn about: {subject}.\n\nTone: {tone}\nPersonality: {personality}\nPerspective: {perspective}\n\nStructure to follow:\n{structure}\n\n{hashtag_instruction}\n\nFormat the output with the headline/title first, then the body content, then hashtags on a separate line."
+  }
+}

@@ -1,0 +1,197 @@
+.jarvis-terminal {
+  position: fixed;
+  left: 50%;
+  bottom: 20px;
+  transform: translateX(-50%);
+  width: min(720px, calc(100% - 32px));
+  max-height: min(70vh, 520px);
+  display: flex;
+  flex-direction: column;
+  z-index: 20;
+  border-radius: 12px;
+  border: 1px solid rgba(136, 204, 255, 0.25);
+  background: rgba(4, 10, 20, 0.82);
+  backdrop-filter: blur(12px);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  overflow: hidden;
+}
+
+.jarvis-terminal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 14px;
+  border-bottom: 1px solid rgba(136, 204, 255, 0.15);
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.jarvis-terminal__title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #88ccff;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.jarvis-terminal__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #556677;
+  box-shadow: 0 0 0 rgba(136, 204, 255, 0);
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+.jarvis-terminal__dot[data-active='true'] {
+  background: #5cffb1;
+  box-shadow: 0 0 10px rgba(92, 255, 177, 0.75);
+  animation: jarvis-pulse 1.6s ease-in-out infinite;
+}
+
+.jarvis-terminal__status {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 11px;
+  text-align: right;
+  transition: color 0.2s;
+}
+
+.jarvis-terminal__status[data-status='thinking'],
+.jarvis-terminal__status[data-status='responding'],
+.jarvis-terminal__status[data-status='transcribing'],
+.jarvis-terminal__status[data-status='speaking'] {
+  color: #88ccff;
+}
+
+.jarvis-terminal__status[data-status='offline'] {
+  color: #ff8f8f;
+}
+
+.jarvis-terminal__status[data-status='missing-key'],
+.jarvis-terminal__status[data-status='error'] {
+  color: #ff8f8f;
+}
+
+.jarvis-terminal__body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px 14px 14px;
+  min-height: 96px;
+}
+
+.jarvis-terminal__placeholder {
+  margin: 0;
+  color: rgba(136, 204, 255, 0.55);
+  font-size: 13px;
+}
+
+.jarvis-terminal__line {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-size: 14px;
+  line-height: 1.45;
+  color: #d9ecff;
+}
+
+.jarvis-terminal__line--user .jarvis-terminal__prompt {
+  color: #5cffb1;
+}
+
+.jarvis-terminal__line--assistant {
+  color: #b8e4ff;
+}
+
+.jarvis-terminal__line--assistant .jarvis-terminal__prompt {
+  color: #88ccff;
+}
+
+.jarvis-terminal__line--error {
+  color: #ffb4b4;
+}
+
+.jarvis-terminal__line--error .jarvis-terminal__prompt {
+  color: #ff6b6b;
+}
+
+.jarvis-terminal__line--streaming .jarvis-terminal__text {
+  color: #d9ecff;
+}
+
+.jarvis-terminal__line--interim {
+  color: rgba(217, 236, 255, 0.65);
+}
+
+.jarvis-terminal__line--interim .jarvis-terminal__prompt {
+  color: rgba(92, 255, 177, 0.75);
+}
+
+.jarvis-terminal__time {
+  flex-shrink: 0;
+  color: rgba(136, 204, 255, 0.45);
+  font-size: 11px;
+  padding-top: 2px;
+}
+
+.jarvis-terminal__prompt {
+  flex-shrink: 0;
+  color: #5cffb1;
+}
+
+.jarvis-terminal__text {
+  word-break: break-word;
+}
+
+.jarvis-terminal__cursor {
+  width: 7px;
+  height: 14px;
+  margin-top: 2px;
+  background: #88ccff;
+  animation: jarvis-blink 1s step-end infinite;
+}
+
+@keyframes jarvis-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.45;
+  }
+}
+
+@keyframes jarvis-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .jarvis-terminal {
+    bottom: 12px;
+    max-height: 180px;
+  }
+
+  .jarvis-terminal__header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .jarvis-terminal__status {
+    text-align: left;
+  }
+
+  .jarvis-terminal__line {
+    font-size: 13px;
+  }
+}
